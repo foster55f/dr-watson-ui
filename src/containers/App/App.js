@@ -11,9 +11,9 @@ import './App.css';
 export class App extends Component {
   constructor() {
     super();
-    this.state = {
-      messages: []
-    }
+    // this.state = {
+    //   messages: []
+    // }
   }
 
   // addMessage = (message, isUser) => {
@@ -38,12 +38,12 @@ export class App extends Component {
   render() {
     console.log(this.props)
     const { user } = this.props;
-    const { messages } = this.state;
+    // const { messages } = this.props.messages;
     return (
       <div className="App">
         <Header signOut={this.signOut} />
         {!user && <WelcomeModal addMessage={this.props.addMessage} />}
-        {user && <ChatBox addMessage={this.addMessage} messages={messages} />}
+        {user && <ChatBox addMessage={this.props.addMessage} messages={this.props.messages} />}
       </div>
     );
   }
