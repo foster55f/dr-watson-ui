@@ -1,5 +1,5 @@
 export const messages = (state = [], action) => {
-      console.log(action.messages)
+      
     switch (action.type) {
           case 'ADD_MESSAGE':
             //     return [...messages, { action}]
