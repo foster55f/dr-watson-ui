@@ -24,7 +24,6 @@ export class WelcomeModal extends Component {
     const { firstName, lastName, feeling } = this.state;
     e.preventDefault();
     if (firstName.length === 0 || lastName.length === 0 || feeling.length === 0) {
-      console.log('hgiii')
     this.setState({error: 'Please make sure you have filled everything out'})
     } else {
       this.props.createUser({

@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { hasErrored } from '../../actions';
+import { hasErrored, addMessage } from '../../actions';
 import { postMessage } from '../../apiCalls';
 import Message from '../../components/Message/Message'
 
@@ -74,6 +74,6 @@ export const mapStateToProps = ({ errorMsg }) => ({
   errorMsg
 })
 
-export const mapDispatchToProps = dispatch => bindActionCreators({ hasErrored }, dispatch);
+export const mapDispatchToProps = dispatch => bindActionCreators({ hasErrored, addMessage }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatBox);
