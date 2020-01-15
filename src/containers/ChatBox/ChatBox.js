@@ -29,6 +29,7 @@ export class ChatBox extends Component {
     if (e.key === 'Enter' || e.button === 0) {
       const message = this.state
       this.props.addMessage(message, true);
+      
       this.setState({ message: '' });
       this.messageChatBot();
     }
@@ -37,6 +38,7 @@ export class ChatBox extends Component {
   messageChatBot = async () => {
     try {
       const messageResponse = await postMessage(this.state.message);
+      
       this.props.addMessage(messageResponse.message, false);
     } catch({ message }) {
       this.props.hasErrored(message)  
@@ -46,7 +48,7 @@ export class ChatBox extends Component {
   render() {
     const { message } = this.state;
     const { messages, errorMsg } = this.props;
-    console.log(messages)
+    console.log(this.props)
 
     const survey = messages.map((message, i) => {
       return <Message

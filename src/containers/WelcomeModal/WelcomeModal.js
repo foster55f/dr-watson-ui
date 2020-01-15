@@ -39,8 +39,9 @@ export class WelcomeModal extends Component {
 
   connectToChatBot = async () => {
     try {
-      const firstMessage = await startConversation(this.state.feeling);
-      this.props.addMessage(firstMessage.message, false);
+      const firstMessage = await startConversation(this.state.feeling)
+    
+      this.props.addMessage(firstMessage, false);
     } catch({ message }) {
       this.props.hasErrored(message);
     }

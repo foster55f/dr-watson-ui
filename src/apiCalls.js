@@ -19,6 +19,7 @@ export const startConversation = async feeling => {
 }
 
 export const postMessage = (newMessage) => {
+  console.log(newMessage)
   const options = {
     method: 'POST',
     body: JSON.stringify(newMessage),
@@ -27,7 +28,7 @@ export const postMessage = (newMessage) => {
     }
   }
   
-  return fetch('https://drwatson-api.herokuapp.com/api/message', options)
+  return fetch('http://localhost:3001/api/v1/ordershttps://drwatson-api.herokuapp.com/api/message', options)
           .then(res => {
             if(!res.ok) {
               throw Error('Something is not right, try again later')
