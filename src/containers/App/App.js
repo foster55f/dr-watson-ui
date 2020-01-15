@@ -29,7 +29,7 @@ export class App extends Component {
     try {
       await endConversation();
       this.props.removeUser();
-      this.props.clearMessages();
+      this.props.clearMessages([]);
     } catch({ message }) {
       this.props.hasErrored(message);
     }

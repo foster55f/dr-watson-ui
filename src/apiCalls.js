@@ -19,7 +19,8 @@ export const startConversation = async feeling => {
 }
 
 export const postMessage = async newMessage => {
-  const url = 'https://drwatson-api.api.com/api/v1/start_session'
+  console.log(newMessage)
+  const url = 'https://drwatson-api.herokuapp.com/api/message'
   const options = {
     method: 'POST',
     headers: {
@@ -28,7 +29,10 @@ export const postMessage = async newMessage => {
     body: JSON.stringify({ newMessage })
   };
 
+ 
+
   const response = await fetch(url, options);
+  console.log(response);
   if (!response.ok) {
     throw Error('Error whatever')
   }
