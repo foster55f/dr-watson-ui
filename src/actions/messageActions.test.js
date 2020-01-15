@@ -15,4 +15,19 @@ describe('actions', () => {
       // Expectation
       expect(result).toEqual(expectedAction);
     });
+
+    it('should have a type of CLEAR_MESSAGE', () => {
+        // Setup
+        const messages = [];
+        const expectedAction = {
+          type: 'CLEAR_MESSAGE',
+          messages: []
+        };
+    
+        // Execution
+        const result = actions.clearMessages(messages);
+    
+        // Expectation
+        expect(result).toEqual(expectedAction);
+      });
   });
