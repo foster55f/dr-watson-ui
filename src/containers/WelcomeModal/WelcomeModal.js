@@ -41,8 +41,7 @@ export class WelcomeModal extends Component {
     console.log(this.props)
     try {
       const firstMessage = await startConversation(this.state.feeling)
-      firstMessage["isTrue"] = false;
-      this.props.addMessage(firstMessage);
+      this.props.addMessage({message: firstMessage.message, isUser:false});
     } catch({ message }) {
       this.props.hasErrored(message);
     }

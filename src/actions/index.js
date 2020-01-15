@@ -12,9 +12,9 @@ export const hasErrored = errorMsg => ({
   errorMsg
 })
 
-export const addMessage = (messages, isTrue) => ({
+export const addMessage = (messages) => ({
   type: 'ADD_MESSAGE',
-  messages, isTrue
+  messages
 })
 
 export const clearMessages = messages => ({

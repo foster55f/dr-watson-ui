@@ -18,23 +18,27 @@ export const startConversation = async feeling => {
   return data;
 }
 
-export const postMessage = (newMessage) => {
-  console.log(newMessage)
+export const postMessage = async newMessage => {
+  const url = 'https://drwatson-api.api.com/api/v1/start_session'
   const options = {
     method: 'POST',
-    body: JSON.stringify(newMessage),
     headers: {
-      'Content-Type': 'application/json'  
-    }
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ newMessage })
+  };
+
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw Error('Error whatever')
   }
-  
-  return fetch('http://localhost:3001/api/v1/ordershttps://drwatson-api.herokuapp.com/api/message', options)
-          .then(res => {
-            if(!res.ok) {
-              throw Error('Something is not right, try again later')
-            }
-            return res.json()})
+
+  const data = await response.json();
+  console.log(data)
+  return data;
 }
+
+
 
 export const endConversation = async () => {
   const url = 'https://drwatson-api.herokuapp.com/api/v1/end_session';
