@@ -23,12 +23,18 @@ export class WelcomeModal extends Component {
   handleSubmit = e => {
     const { firstName, lastName, feeling } = this.state;
     e.preventDefault();
-    this.props.createUser({
-      id: Date.now(),
-      firstName,
-      lastName,
-      feeling,
-    });
+    if (firstName.length === 0 || lastName.length === 0 || feeling.length === 0) {
+      console.log('hgiii')
+    this.setState({error: 'Please make sure you have filled everything out'})
+    } else {
+      this.props.createUser({
+        id: Date.now(),
+        firstName,
+        lastName,
+        feeling,
+      });
+   }
+   
     this.connectToChatBot();
   }
 
@@ -46,14 +52,15 @@ export class WelcomeModal extends Component {
     return (
       <form className="welcome-modal">
         <legend>Welcome to Survey Bot!  Please enter your name.</legend>
-        {error && <p className="error-msg">{error}</p>}
-        <label>First Name:
+        <p className="error-msg">{error}</p>
+          <label>First Name:
           <input
-            name="firstName"
-            value={firstName}
-            onChange={this.handleChange}
-          />
-        </label>
+              name="firstName"
+              value={firstName}
+              onChange={this.handleChange}
+            />
+          </label>
+        
         <label>Last Name:
         <input
             name="lastName"
